@@ -639,6 +639,9 @@ static void
 get_locale_info(int type, LocaleInfo *locale_info)
 {
     switch (type) {
+#ifdef __ANDROID__
+    case LT_CURRENT_LOCALE:
+#else
     case LT_CURRENT_LOCALE: {
         struct lconv *locale_data = localeconv();
         locale_info->decimal_point = locale_data->decimal_point;
@@ -646,6 +649,7 @@ get_locale_info(int type, LocaleInfo *locale_info)
         locale_info->grouping = locale_data->grouping;
         break;
     }
+#endif
     case LT_DEFAULT_LOCALE:
         locale_info->decimal_point = ".";
         locale_info->thousands_sep = ",";
