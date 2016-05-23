@@ -78,7 +78,11 @@ mkpwent(struct passwd *p)
 #ifdef __VMS
     SETS(setIndex++, "");
 #else
+#ifdef __ANDROID__
+    SETS(setIndex++, "");
+#else
     SETS(setIndex++, p->pw_gecos);
+#endif
 #endif
     SETS(setIndex++, p->pw_dir);
     SETS(setIndex++, p->pw_shell);
