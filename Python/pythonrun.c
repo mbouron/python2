@@ -77,7 +77,11 @@ int Py_DebugFlag; /* Needed by parser.c */
 int Py_VerboseFlag; /* Needed by import.c */
 int Py_InteractiveFlag; /* Needed by Py_FdIsInteractive() below */
 int Py_InspectFlag; /* Needed to determine whether to exit at SystemExit */
+#ifdef __ANDROID__
+int Py_NoSiteFlag = 1; /* Suppress 'import site' on Android */
+#else
 int Py_NoSiteFlag; /* Suppress 'import site' */
+#endif
 int Py_BytesWarningFlag; /* Warn on str(bytes) and str(buffer) */
 int Py_DontWriteBytecodeFlag; /* Suppress writing bytecode files (*.py[co]) */
 int Py_UseClassExceptionsFlag = 1; /* Needed by bltinmodule.c: deprecated */
