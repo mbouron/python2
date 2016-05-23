@@ -21,6 +21,8 @@
 const char *Py_FileSystemDefaultEncoding = "mbcs";
 #elif defined(__APPLE__)
 const char *Py_FileSystemDefaultEncoding = "utf-8";
+#elif defined(__ANDROID__)
+const char *Py_FileSystemDefaultEncoding = "utf-8";
 #else
 const char *Py_FileSystemDefaultEncoding = NULL; /* use default */
 #endif
