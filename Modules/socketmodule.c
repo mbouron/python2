@@ -173,6 +173,10 @@ shutdown(how) -- shut down traffic in one or both directions\n\
 # endif
 #endif
 
+#ifdef __ANDROID__
+# undef HAVE_GETHOSTBYNAME_R
+#endif
+
 #if !defined(HAVE_GETHOSTBYNAME_R) && defined(WITH_THREAD) && \
     !defined(MS_WINDOWS)
 # define USE_GETHOSTBYNAME_LOCK
